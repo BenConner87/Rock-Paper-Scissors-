@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Nunito&family=Roboto+Mono:wght@200;300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.66);
+    color: white;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+.head-title {
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.score {
+    margin-top: 1rem; 
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    word-spacing: 2rem;
+    font-size: 1.25rem;
+    border: 2px solid white;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 2rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.954);
+    font-weight: bold;
+}
+
+.container .p-score, .r-score {
+    font-size: 1.5rem;
+}
+
+.container .p-score {
+    color: red;
+}
+
+.container .r-score {
+    color: blue;
+}
+
+.buttons {
+    text-align: center;
+    word-spacing: 2rem;
+    margin-top: 2rem;
+}
+
+.buttons img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.results {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.25rem;
+}

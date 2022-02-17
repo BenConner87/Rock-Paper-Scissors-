@@ -1,58 +1,81 @@
 
+// cache DOM
+const pScore = document.querySelector('.p-score');
+const cScore = document.querySelector('.r-score');
+const rockButt = document.querySelector('.rock-button');
+const paperButt = document.querySelector('.paper-button');
+const scissorsButt = document.querySelector('.scissors-button');
+const results = document.querySelector('.results-text');
+
+let playerSelection = '';
+let tempPlayerScore = 0;
+let tempComputerScore = 0;
+
+// function to generate random choice for computer
 function computerPlay() {
     let random = ['rock', 'paper', 'scissors'];
     return random[Math.floor(Math.random() * random.length)];
 }
 
-function game() {
-    const games = 5;
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < games; i++) {
-        let playerSelection = prompt('rock, paper, or scissors').toLowerCase();
-        function computerPlay() {
-            let random = ['rock', 'paper', 'scissors'];
-            return random[Math.floor(Math.random() * random.length)]}
-        let computerSelection = computerPlay();
-        let round = playRound(playerSelection, computerSelection);
-        if (round == 'Win') {
-            playerScore++;
-            console.log('Win');
-        } else if (round == 'Lose') {
-            computerScore++;
-            console.log('Lose');
-        } else {
-            console.log('Draw');
-        }
+// rock button listener 
+rockButt.addEventListener('click', function() {
+    playerSelection = 'rock';
+    computerSelection = computerPlay();
+    if (computerSelection === 'paper') {
+        tempComputerScore++;
+        cScore.innerHTML = tempComputerScore;
+    }   else {
+        tempPlayerScore++;
+        pScore.innerHTML = tempPlayerScore;
     }
+    roundResults();
+})
 
-    if (playerScore > computerScore) {
-        console.log(`You win ${playerScore} to ${computerScore}.`);
+//paper event listener
+paperButt.addEventListener('click', function() {
+    playerSelection = 'paper';
+    computerSelection = computerPlay();
+    if (computerSelection === 'scissors') {
+        tempComputerScore++;
+        cScore.innerHTML = tempComputerScore;
+    }   else {
+        tempPlayerScore++;
+        pScore.innerHTML = tempPlayerScore;
+    }
+    roundResults();
+})
+
+// scissor event listener
+scissorsButt.addEventListener('click', function() {
+    playerSelection = 'scissors';
+    computerSelection = computerPlay();
+    if (computerSelection === 'rock') {
+        tempComputerScore++;
+        cScore.innerHTML = tempComputerScore;
+    }   else {
+        tempPlayerScore++;
+        pScore.innerHTML = tempPlayerScore;
+    }
+    roundResults();
+})
+
+// function to show results after 5 rounds and clear score
+function roundResults() {
+    if (pScore.innerHTML >= 5) {
+        results.innerHTML = 'You WIN!'
+        tempPlayerScore = 0;
+        pScore.innerHTML = tempPlayerScore;
+        tempComputerScore = 0;
+        cScore.innerHTML = tempComputerScore;
+
+    } else if (cScore.innerHTML >= 5) {
+        results.innerHTML = 'You LOSE!'
+        tempPlayerScore = 0;
+        pScore.innerHTML = tempPlayerScore;
+        tempComputerScore = 0;
+        cScore.innerHTML = tempComputerScore;
     } else {
-        console.log(`You lose ${playerScore} to ${computerScore}`);
-    }
+        results.innerHTML = '';  
+  }
 }
-
-game();
-
-
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return `Draw`;
-    } else if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-                (playerSelection == 'paper' && computerSelection == 'rock') ||
-                (playerSelection == 'scissors' && computerSelection == 'paper')) {
-        return `Win`;
-    } else {
-        return `Lose`;  
-    }
-}
-const playerSelection = prompt('rock, paper, or scissors').toLowerCase();
-const computerSelection = computerPlay();
-
-
-
-
-
-
 
